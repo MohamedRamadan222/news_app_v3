@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app_flutter_v1/bloc/news_cubit.dart';
 import 'package:news_app_flutter_v1/ui/splash_screen.dart';
 
+import 'constants/colors.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -10,11 +12,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // Teal color palette from image
-  static const Color tealDark = Color(0xFF005461);
-  static const Color tealMedium = Color(0xFF0C7779);
-  static const Color tealLight = Color(0xFF249E94);
-  static const Color tealLightest = Color(0xFF3BC1A8);
+
 
   @override
   Widget build(BuildContext context) {
@@ -25,26 +23,26 @@ class MyApp extends StatelessWidget {
         title: 'Flutter NewsApp V3',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(
-            seedColor: tealDark,
-            primary: tealDark,
-            secondary: tealLight,
+            seedColor: AppColors.tealDark,
+            primary: AppColors.tealDark,
+            secondary: AppColors.tealLight,
             brightness: Brightness.light,
           ),
           useMaterial3: true,
           appBarTheme: AppBarTheme(
             centerTitle: true,
             elevation: 0,
-            backgroundColor: tealDark,
+            backgroundColor: AppColors.tealDark,
             foregroundColor: Colors.white,
           ),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
-              backgroundColor: tealMedium,
+              backgroundColor: AppColors.tealMedium,
               foregroundColor: Colors.white,
             ),
           ),
           floatingActionButtonTheme: FloatingActionButtonThemeData(
-            backgroundColor: tealLight,
+            backgroundColor: AppColors.tealLight,
             foregroundColor: Colors.white,
           ),
         ),

@@ -4,6 +4,8 @@ import 'package:news_app_flutter_v1/bloc/news_cubit.dart';
 import 'package:news_app_flutter_v1/bloc/news_state.dart';
 import 'package:news_app_flutter_v1/ui/details_screen.dart';
 
+import '../constants/colors.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -12,12 +14,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // Teal colors
-  static const Color tealDark = Color(0xFF005461);
-  static const Color tealMedium = Color(0xFF0C7779);
-  static const Color tealLight = Color(0xFF249E94);
-  static const Color tealLightest = Color(0xFF3BC1A8);
-
   @override
   void initState() {
     super.initState();
@@ -42,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CircularProgressIndicator(color: tealMedium),
+                  CircularProgressIndicator(color: AppColors.tealMedium),
                   const SizedBox(height: 16),
                   const Text('Loading news...'),
                 ],
@@ -51,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
           } else if (state is NewsLoaded) {
             final posts = state.posts;
             return RefreshIndicator(
-              color: tealDark,
+              color: AppColors.tealDark,
               onRefresh: () => context.read<NewsCubit>().getAllData(),
               child: ListView.builder(
                 padding: const EdgeInsets.all(12),
@@ -61,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   return Card(
                     margin: const EdgeInsets.only(bottom: 12),
                     elevation: 3,
-                    shadowColor: tealLight.withValues(alpha: 0.3),
+                    shadowColor: AppColors.tealLight.withValues(alpha: 0.3),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16),
                     ),
@@ -85,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             end: Alignment.bottomRight,
                             colors: [
                               Colors.white,
-                              tealLightest.withValues(alpha: 0.1),
+                              AppColors.tealLightest.withValues(alpha: 0.1),
                             ],
                           ),
                         ),
@@ -103,7 +99,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                       gradient: const LinearGradient(
                                         begin: Alignment.topLeft,
                                         end: Alignment.bottomRight,
-                                        colors: [tealMedium, tealLight],
+                                        colors: [
+                                          AppColors.tealMedium,
+                                          AppColors.tealLight,
+                                        ],
                                       ),
                                       borderRadius: BorderRadius.circular(12),
                                     ),
@@ -125,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       style: const TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
-                                        color: tealDark,
+                                        color: AppColors.tealDark,
                                       ),
                                       maxLines: 2,
                                       overflow: TextOverflow.ellipsis,
@@ -154,7 +153,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                       vertical: 6,
                                     ),
                                     decoration: BoxDecoration(
-                                      color: tealLightest.withValues(alpha: 0.2),
+                                      color: AppColors.tealLightest.withValues(
+                                        alpha: 0.2,
+                                      ),
                                       borderRadius: BorderRadius.circular(20),
                                     ),
                                     child: const Row(
@@ -162,7 +163,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         Text(
                                           'Read more',
                                           style: TextStyle(
-                                            color: tealDark,
+                                            color: AppColors.tealDark,
                                             fontWeight: FontWeight.w600,
                                           ),
                                         ),
@@ -170,7 +171,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         Icon(
                                           Icons.arrow_forward_ios,
                                           size: 14,
-                                          color: tealDark,
+                                          color: AppColors.tealDark,
                                         ),
                                       ],
                                     ),

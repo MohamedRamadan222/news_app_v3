@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app_flutter_v1/constants/colors.dart';
 import 'package:news_app_flutter_v1/ui/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -23,13 +24,15 @@ class _SplashScreenState extends State<SplashScreen>
       vsync: this,
     );
 
-    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeIn),
-    );
+    _fadeAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeIn));
 
-    _scaleAnimation = Tween<double>(begin: 0.5, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeOutBack),
-    );
+    _scaleAnimation = Tween<double>(
+      begin: 0.5,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
 
     _controller.forward();
 
@@ -54,15 +57,15 @@ class _SplashScreenState extends State<SplashScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color(0xFF005461), // Dark teal
-              Color(0xFF0C7779), // Medium teal
-              Color(0xFF249E94), // Light teal
-              Color(0xFF3BC1A8), // Lightest teal
+              AppColors.tealDark, // Dark teal
+              AppColors.tealMedium, // Dark teal
+              AppColors.tealLight, // Dark teal
+              AppColors.tealLightest, // Dark teal
             ],
           ),
         ),
@@ -78,7 +81,7 @@ class _SplashScreenState extends State<SplashScreen>
                   Container(
                     padding: const EdgeInsets.all(24),
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.2),
+                      color: Colors.white.withValues(alpha: 0.2),
                       shape: BoxShape.circle,
                     ),
                     child: const Icon(
@@ -104,7 +107,7 @@ class _SplashScreenState extends State<SplashScreen>
                     'Stay Informed, Stay Ahead',
                     style: TextStyle(
                       fontSize: 16,
-                      color: Colors.white.withOpacity(0.8),
+                      color: Colors.white.withValues(alpha: 0.8),
                       letterSpacing: 1,
                     ),
                   ),
@@ -116,7 +119,7 @@ class _SplashScreenState extends State<SplashScreen>
                     child: CircularProgressIndicator(
                       strokeWidth: 3,
                       valueColor: AlwaysStoppedAnimation<Color>(
-                        Colors.white.withOpacity(0.8),
+                        Colors.white.withValues(alpha: 0.8),
                       ),
                     ),
                   ),

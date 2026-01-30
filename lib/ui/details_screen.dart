@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app_flutter_v1/bloc/news_cubit.dart';
 import 'package:news_app_flutter_v1/bloc/news_state.dart';
 
+import '../constants/colors.dart';
+
 class DetailsScreen extends StatefulWidget {
   final int id;
 
@@ -13,12 +15,6 @@ class DetailsScreen extends StatefulWidget {
 }
 
 class _DetailsScreenState extends State<DetailsScreen> {
-  // Teal colors
-  static const Color tealDark = Color(0xFF005461);
-  static const Color tealMedium = Color(0xFF0C7779);
-  static const Color tealLight = Color(0xFF249E94);
-  static const Color tealLightest = Color(0xFF3BC1A8);
-
   @override
   void initState() {
     super.initState();
@@ -28,9 +24,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Article Details'),
-      ),
+      appBar: AppBar(title: const Text('Article Details')),
       body: BlocBuilder<NewsCubit, NewsState>(
         builder: (context, state) {
           if (state is PostInitial || state is PostLoading) {
@@ -38,7 +32,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CircularProgressIndicator(color: tealMedium),
+                  CircularProgressIndicator(color: AppColors.tealMedium),
                   const SizedBox(height: 16),
                   const Text('Loading article...'),
                 ],
@@ -58,7 +52,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       gradient: LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
-                        colors: [tealDark, tealMedium],
+                        colors: [AppColors.tealDark, AppColors.tealMedium],
                       ),
                     ),
                     child: Column(
@@ -70,7 +64,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             vertical: 8,
                           ),
                           decoration: BoxDecoration(
-                            color: tealLightest,
+                            color: AppColors.tealLightest,
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Text(
@@ -105,7 +99,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             vertical: 10,
                           ),
                           decoration: BoxDecoration(
-                            color: tealLightest.withOpacity(0.2),
+                            color: AppColors.tealLightest.withValues(
+                              alpha: 0.2,
+                            ),
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: const Row(
@@ -113,7 +109,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             children: [
                               Icon(
                                 Icons.article_outlined,
-                                color: tealDark,
+                                color: AppColors.tealDark,
                               ),
                               SizedBox(width: 8),
                               Text(
@@ -121,7 +117,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
-                                  color: tealDark,
+                                  color: AppColors.tealDark,
                                 ),
                               ),
                             ],
@@ -134,7 +130,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             color: Colors.grey[50],
                             borderRadius: BorderRadius.circular(16),
                             border: Border.all(
-                              color: tealLightest.withOpacity(0.3),
+                              color: AppColors.tealLightest.withValues(
+                                alpha: 0.3,
+                              ),
                             ),
                           ),
                           child: Text(
